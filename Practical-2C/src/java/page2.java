@@ -39,21 +39,11 @@ public class page2 extends HttpServlet {
             out.println("</head>");
             out.println("<body bgcolor=pink>");
             
-            HttpSession hs = request.getSession(true);
-            if(hs.isNew())
-            {
-                out.println("<body bgcolor=yellow>");
-                String name  = request.getParameter("uname");
-                hs.setAttribute("uname", name);
-                hs.setAttribute("visit","1");
-                out.println("<h1>Welcome first time</h1>");
-            }
-            else{
-                out.println("<h1>Welcome Again</h1>");
-                int visit = Integer.parseInt((String)hs.getAttribute("visit"))+1;
-                out.println("<h1>You Visited"+ visit +"Times</h1>");
-                hs.setAttribute("visit",""+ visit);
-            }
+            HttpSession hs = request.getSession(false);
+            out.println("<h1>Welcome Again " + hs.getAttribute("uname") + " on Page No. 2</h1>");
+            int visit = Integer.parseInt((String)hs.getAttribute("visit"))+1;
+            out.println("<h1>You Visited" + visit +"Times</h1>");
+            hs.setAttribute("visit",""+ visit);
             out.println("<h1>Your Session ID:"+hs.getId()+"</h1>");
             out.println("<h1>You Logged in at"+new java.util.Date(hs.getCreationTime())+"</h1>");
             
