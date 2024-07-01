@@ -37,6 +37,9 @@ public class LogOut extends HttpServlet {
             out.println("<title>Servlet LogOut</title>");            
             out.println("</head>");
             out.println("<body bgcolor=red>");
+            javax.servlet.http.HttpSession hs = request.getSession();
+            if(hs != null)
+                hs.invalidate();
             
             
             out.println("<h1>You are Logged out now.........</h1>");
