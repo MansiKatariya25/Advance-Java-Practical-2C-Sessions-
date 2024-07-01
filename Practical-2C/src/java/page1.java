@@ -47,17 +47,16 @@ public class page1 extends HttpServlet {
                 String name  = request.getParameter("uname");
                 hs.setAttribute("uname", name);
                 hs.setAttribute("visit","1");
-                out.println("<h1>Welcome first time</h1>");
+                out.println("<h1>Welcome first time " + hs.getAttribute("uname")+ "</h1>");
             }
             else{
                 out.println("<h1>Welcome Again</h1>");
                 int visit = Integer.parseInt((String)hs.getAttribute("visit"))+1;
-                out.println("<h1>You Visited"+ visit +"Times</h1>");
+                out.println("<h1>You Visited" + visit +"Times</h1>");
                 hs.setAttribute("visit",""+ visit);
             }
             out.println("<h1>Your Session ID:"+hs.getId()+"</h1>");
             out.println("<h1>You Logged in at"+new java.util.Date(hs.getCreationTime())+"</h1>");
-            
             out.println("<a href=page2>Click here to visit Page2</a>");
             out.println("<br>");
             out.println("<a href=page3>Click here to visit Page3</a>");
